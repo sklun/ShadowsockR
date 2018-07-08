@@ -1,0 +1,101 @@
+########Install########
+
+>>git clone https://github.com/sklun/gfwlist2privoxy
+
+>>cd gfwlist2privoxy
+
+>>sudo mv ssr /usr/local/bin
+
+>>sudo chmod +x /usr/local/bin/ssr
+
+>>ssr install
+
+########配 置#########
+
+>>ssr config
+
+>>
+{
+    "server": "0..0.0.0",	// ssr服务器ip
+    "server_ipv6": "::",
+    "server_port": 8080,	// ssr服务器端口
+    "local_address": "127.0.0.1",
+    "local_port": 1080,
+    "password": "123456",		// 对应password
+    "method": "none",			// 这里对应SSGlobal配置中的Encryption
+    "protocol": "auth_chain_a",		//对应protocl
+    "protocol_param": "",
+    "obfs": "http_simple",		//对应obfs
+    "obfs_param": "hello.world",	//对应obfs_param
+    "speed_limit_per_con": 0,
+    "speed_limit_per_user": 0,
+    "additional_ports" : {}, // only works under multi-user mode
+    "additional_ports_only" : false, // only works under multi-user mode
+    "timeout": 120,
+    "udp_timeout": 60,
+    "dns_ipv6": false,
+    "connect_verbose_info": 0,
+    "redirect": "",
+    "fast_open": false
+}
+<<
+
+#Start&Stop
+
+>>ssr start
+>>ssr stop
+
+#Uninstall
+
+>>ssr uninstall
+
+
+########Privoxy配置########
+
+#Install privoxy 
+
+>>sudo apt install privoxy
+
+#Config
+
+>>sudo gedit /etc/privoxy/config
+
+#全局模式
+********************
+# 添加本地ssr服务到配置文件
+
+>>sudo echo "forward-socks5 / 127.0.0.1:1080 ."  >> /etc/privoxy/config
+
+# Privoxy 默认监听端口是是8118
+
+>>echo "export http_proxy=http://127.0.0.1:8118" >> ~/.bashrc
+>>echo "export https_proxy=http://127.0.0.1:8118" >> ~/.bashrc
+>>echo "export no_proxy=localhost ">> ~/.bashrc
+
+# 启动服务
+
+>>systemctl start privoxy.service
+********************
+#PAC模式
+********************
+>>cd gfwlist2privoxy
+
+>>bash gfwlist2privoxy
+
+>>
+proxy(socks5): 127.0.0.1:1080		# 注意，如果你修改了ssr本地监听端口是需要设置对应的
+{+forward-override{forward-socks5 127.0.0.1:1080 .}}
+<<
+
+>>sudo cp -af gfw.action /etc/privoxy/
+
+>>echo "actionsfile gfw.action" >> /etc/privoxy/config
+
+# 启动服务
+>>systemctl start privoxy.service
+********************
+
+########开机自启########
+>>sudo echo "ssr start" >> /etc/rc.local
+
+
