@@ -85,6 +85,10 @@
 >>
 proxy(socks5): 127.0.0.1:1080		# 注意，如果你修改了ssr本地监听端口是需要设置对应的
 {+forward-override{forward-socks5 127.0.0.1:1080 .}}
+
+=================================================================
+
+"cp -af /home/sklun/Tools/wget_git/gfwlist2privoxy/gfw.action /etc/privoxy/"
 <<
 
 >>sudo cp -af gfw.action /etc/privoxy/
@@ -94,6 +98,24 @@ proxy(socks5): 127.0.0.1:1080		# 注意，如果你修改了ssr本地监听端�
 # 启动服务
 >>systemctl start privoxy.service
 ********************
+
+########proxy 环境变量########
+
+# privoxy默认监听端口为8118
+
+>>sudo vi /etc/environment
+
+	>>export http_proxy=http://127.0.0.1:8118
+	>>export https_proxy=http://127.0.0.1:8118
+	>>export no_proxy=localhost
+
+# no_proxy是不经过privoxy代理的地址
+# 只能填写具体的ip、域名后缀，多个条目之间使用','逗号隔开
+# 比如: export no_proxy="localhost, 192.168.1.1, ip.cn, chinaz.com"
+# 访问 localhost、192.168.1.1、ip.cn、*.ip.cn、chinaz.com、*.chinaz.com 将不使用代理
+
+#查看系统代理
+>>env | grep -i proxy
 
 ########开机自启########
 >>sudo echo "ssr start" >> /etc/rc.local
