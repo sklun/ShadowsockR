@@ -10,7 +10,7 @@
 
 >>ssr install
 
-########配 置#########
+########Config#########
 
 >>ssr config
 
@@ -50,7 +50,7 @@
 >>ssr uninstall
 
 
-########Privoxy配置########
+########Privoxy Config########
 
 #Install privoxy 
 
@@ -60,7 +60,7 @@
 
 >>sudo gedit /etc/privoxy/config
 
-#全局模式
+#Global Mode
 ********************
 # 添加本地ssr服务到配置文件
 
@@ -72,11 +72,11 @@
 >>echo "export https_proxy=http://127.0.0.1:8118" >> ~/.bashrc
 >>echo "export no_proxy=localhost ">> ~/.bashrc
 
-# 启动服务
+# Start service
 
 >>systemctl start privoxy.service
 ********************
-#PAC模式
+#PAC Mode
 ********************
 >>cd gfwlist2privoxy
 
@@ -95,11 +95,11 @@ proxy(socks5): 127.0.0.1:1080		# 注意，如果你修改了ssr本地监听端�
 
 >>echo "actionsfile gfw.action" >> /etc/privoxy/config
 
-# 启动服务
+# Start service
 >>systemctl start privoxy.service
 ********************
 
-########proxy 环境变量########
+########Proxy Environment########
 
 # privoxy默认监听端口为8118
 
@@ -117,7 +117,7 @@ proxy(socks5): 127.0.0.1:1080		# 注意，如果你修改了ssr本地监听端�
 #查看系统代理
 >>env | grep -i proxy
 
-########开机自启########
+########PowerBoot########
 >>sudo echo "ssr start" >> /etc/rc.local
 
 
