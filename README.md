@@ -17,11 +17,9 @@ https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsock
 
 >>wget https://raw.githubusercontent.com/sklun/ShadowsockR/master/shadowsocksR.sh    //获取脚本 
     
-若提示 "wget:command not found";
+	若提示 "wget:command not found";
 
-执行：
-
->>yum install wget -y    //安装wget
+	执行>>yum install wget -y    //安装wget
 
 >>chmod +x shadowsocksR.sh    //赋予执行权限
 
@@ -100,6 +98,7 @@ https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsock
 }
 
 #部署完毕后
+
 {
 
 	Congratulations, ShadowsocksR server install completed!
@@ -113,6 +112,7 @@ https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsock
 
 **********************************
 #安装Google BBR加速
+
 执行:
 
 >>wget https://raw.githubusercontent.com/sklun/ShadowsockR/master/bbr.sh
@@ -123,23 +123,25 @@ https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsock
 
 #检验是否安装完成
 
->>uname -r    //查看内核版本，含有 4.9.0 就表示 OK 了
+>>uname -r
+
+	查看内核版本，含有 4.9.0 就表示 OK 了
 
 >>sysctl net.ipv4.tcp_available_congestion_control
 
-返回值一般为：net.ipv4.tcp_available_congestion_control = bbr cubic reno
+	返回值一般为：net.ipv4.tcp_available_congestion_control = bbr cubic reno
 
 >>sysctl net.ipv4.tcp_congestion_control
 
-返回值一般为：net.ipv4.tcp_congestion_control = bbr
+	返回值一般为：net.ipv4.tcp_congestion_control = bbr
 
 >>sysctl net.core.default_qdisc
 
-返回值一般为：net.core.default_qdisc = fq
+	返回值一般为：net.core.default_qdisc = fq
 
 >>lsmod | grep bbr
 
-返回值有 tcp_bbr 模块即说明bbr已启动
+	返回值有 tcp_bbr 模块即说明bbr已启动
 
 **********************************
 #VPS
@@ -187,6 +189,7 @@ https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsock
 SSR修改密码、配置多端口
 
 >>vi /etc/s-s.json
+
 {
     
 	"server": "0.0.0.0",    
