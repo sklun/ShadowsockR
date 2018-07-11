@@ -10,22 +10,24 @@ https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsock
 
 **********************************
 
-# 安装过程
+## 安装过程
 
-#部署SSR
+### 部署 SSR
 
-执行：
+#### 执行：
 
->>wget https://raw.githubusercontent.com/sklun/ShadowsockR/master/shadowsocksR.sh    //获取脚本 
-    
+```Shell
+wget https://raw.githubusercontent.com/sklun/ShadowsockR/master/shadowsocksR.sh    //获取脚本 
+```    
 	若提示 "wget:command not found";
 
 	执行>>yum install wget -y    //安装wget
-
->>chmod +x shadowsocksR.sh    //赋予执行权限
-
->>./shadowsocksR.sh 2>&1 | tee shadowsocksR.log    //执行安装脚本
-
+```Shell
+chmod +x shadowsocksR.sh    //赋予执行权限
+```
+```Shell
+./shadowsocksR.sh 2>&1 | tee shadowsocksR.log    //执行安装脚本
+```
 {
 
 	Please enter password for ShadowsocksR:
@@ -98,7 +100,7 @@ https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsock
 	Press any key to start...or Press Ctrl+C to cancel   //开始部署
 }
 
-#部署完毕后
+#### 部署完毕后
 
 {
 
@@ -112,68 +114,75 @@ https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsock
 }
 
 **********************************
-#安装Google BBR加速
+### 安装Google BBR加速
 
-执行:
+#### 执行:
 
->>wget https://raw.githubusercontent.com/sklun/ShadowsockR/master/bbr.sh
-
->>chmod +x bbr.sh
-
->>./bbr.sh
-
-#检验是否安装完成
-
->>uname -r
-
+```Shell
+wget https://raw.githubusercontent.com/sklun/ShadowsockR/master/bbr.sh
+```
+```Shell
+chmod +x bbr.sh
+```
+```Shell
+./bbr.sh
+```
+#### 检验是否安装完成
+```Shell
+uname -r
+```
 	查看内核版本，含有 4.9.0 就表示 OK 了
-
->>sysctl net.ipv4.tcp_available_congestion_control
-
+```Shell
+sysctl net.ipv4.tcp_available_congestion_control
+```
 	返回值一般为：net.ipv4.tcp_available_congestion_control = bbr cubic reno
-
->>sysctl net.ipv4.tcp_congestion_control
-
+```Shell
+sysctl net.ipv4.tcp_congestion_control
+```
 	返回值一般为：net.ipv4.tcp_congestion_control = bbr
-
->>sysctl net.core.default_qdisc
-
+```Shell
+sysctl net.core.default_qdisc
+```
 	返回值一般为：net.core.default_qdisc = fq
-
->>lsmod | grep bbr
-
+```Shell
+lsmod | grep bbr
+```
 	返回值有 tcp_bbr 模块即说明bbr已启动
 
-**********************************
-#VPS
+### 附录
+
+#### VPS
 
 显示所有进出链接
->>netstat -anp |grep 'ESTABLISHED' |grep 'python'
-
+```Shell
+netstat -anp |grep 'ESTABLISHED' |grep 'python'
+```
 仅显示链接服务器的用户连接 
->>netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp6'
-
+```Shell
+netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp6'
+```
 仅显示链接服务器的用户连接数量
->>netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp6' |wc -l
+```Shell
+netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp6' |wc -l
+```
 
-**********************************　
-#SSR 
-
-	启动
-	
->>/etc/init.d/shadowsocks start
-
+#### SSR 
+	启动	
+```Shell
+/etc/init.d/shadowsocks start
+```
 	停止
-	
->>/etc/init.d/shadowsocks stop
-
+```Shell	
+/etc/init.d/shadowsocks stop
+```
 	重启
-	
->>/etc/init.d/shadowsocks restart
-
+```Shell	
+/etc/init.d/shadowsocks restart
+```
 	查看状态
->>/etc/init.d/shadowsocks status
-	
+```Shell
+/etc/init.d/shadowsocks status
+```	
 	配置文件路径：/etc/shadowsocks.json
 
 	日志文件路径：/var/log/shadowsocks.log
@@ -182,39 +191,45 @@ https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsock
 
 重定义命令	//设不设都行
 
->> echo -e "alias startssr='/etc/init.d/shadowsocks start'\nalias stopssr='/etc/init.d/shadowsocks stop'\nalias restartssr='/etc/init.d/shadowsocks restart'\nalias statusssr='/etc/init.d/shadowsocks status'" >> ~/.bashrc && source ~/.bashrc
-
+```Shell
+echo -e "alias startssr='/etc/init.d/shadowsocks start'\nalias stopssr='/etc/init.d/shadowsocks stop'\nalias restartssr='/etc/init.d/shadowsocks restart'\nalias statusssr='/etc/init.d/shadowsocks status'" >> ~/.bashrc && source ~/.bashrc
+```
 	启动
->>startssr
-	
+```Shell
+startssr
+```	
 	停止
->>stopssr
-	
+```Shell
+stopssr
+```	
 	重启
->>restartssr
-	
+```Shell
+restartssr
+```	
 	查看状态
->>statusssr
-
+```Shell
+statusssr
+```
 
 显示当前所有链接SS的用户IP
-
->>netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp6' |awk '{print $5}' |awk -F ":" '{print $1}' |sort -u
-
+```Shell
+netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp6' |awk '{print $5}' |awk -F ":" '{print $1}' |sort -u
+```
 显示当前所有链接SS的用户IP数量
-
->>netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp6' |awk '{print $5}' |awk -F ":" '{print $1}' |sort -u |wc -l
-
+```Shell
+netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp6' |awk '{print $5}' |awk -F ":" '{print $1}' |sort -u |wc -l
+```
 多端口
-
->>netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp6' |grep 222.233.22.22:2222  /*yourIp:yourPort*/
-
->>netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp6' |grep 222.233.22.22:3333  /*yourIp:yourPort*/
-
-SSR修改密码、配置多端口
-
->>vi /etc/shadowsocks.json
-
+```Shell
+netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp6' |grep 222.233.22.22:2222  /*yourIp:yourPort*/
+```
+```Shell
+netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp6' |grep 222.233.22.22:3333  /*yourIp:yourPort*/
+```
+##### SSR修改密码、配置多端口
+```Shell
+vi /etc/shadowsocks.json
+```
 {
     
 	"server": "0.0.0.0",    
@@ -229,12 +244,13 @@ SSR修改密码、配置多端口
 	},
 	
 }    
-
->>/etc/init.d/shadowsocks restart    //重启ssr
-
-如不能联网，则关闭防火墙    //一般不要关
-
->>service iptables stop
-    
->>chkconfig iptables off 
- 
+```Shell
+/etc/init.d/shadowsocks restart    //重启ssr
+```
+###### 如不能联网，则关闭防火墙    //一般不要关
+```Shell
+service iptables stop
+```    
+```Shell
+chkconfig iptables off 
+``` 
