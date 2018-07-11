@@ -10,7 +10,7 @@ https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsock
 
 **********************************
 
-####安装过程####
+# 安装过程
 
 #部署SSR
 
@@ -159,13 +159,20 @@ https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsock
 **********************************　
 #SSR 
 
-	启动>>/etc/init.d/shadowsocks start
+	启动
+	
+>>/etc/init.d/shadowsocks start
 
-	停止>>/etc/init.d/shadowsocks stop
+	停止
+	
+>>/etc/init.d/shadowsocks stop
 
-	重启>>/etc/init.d/shadowsocks restart
+	重启
+	
+>>/etc/init.d/shadowsocks restart
 
-	查看状态>>/etc/init.d/shadowsocks status
+	查看状态
+>>/etc/init.d/shadowsocks status
 	
 	配置文件路径：/etc/shadowsocks.json
 
@@ -177,13 +184,17 @@ https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsock
 
 >> echo -e "alias startssr='/etc/init.d/shadowsocks start'\nalias stopssr='/etc/init.d/shadowsocks stop'\nalias restartssr='/etc/init.d/shadowsocks restart'\nalias statusssr='/etc/init.d/shadowsocks status'" >> ~/.bashrc && source ~/.bashrc
 
-	启动>>startssr
+	启动
+>>startssr
 	
-	停止>>stopssr
+	停止
+>>stopssr
 	
-	重启>>restartssr
+	重启
+>>restartssr
 	
-	查看状态>>statusssr
+	查看状态
+>>statusssr
 
 
 显示当前所有链接SS的用户IP
