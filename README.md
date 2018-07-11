@@ -203,21 +203,21 @@ netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp6' |wc -l
 echo -e "alias startssr='/etc/init.d/shadowsocks start'\nalias stopssr='/etc/init.d/shadowsocks stop'\nalias restartssr='/etc/init.d/shadowsocks restart'\nalias statusssr='/etc/init.d/shadowsocks status'" >> ~/.bashrc && source ~/.bashrc
 ```
 * 设置后：
- 启动
+ >启动
 ```Shell
-startssr
+	startssr
 ```
- 停止
+ >停止
 ```Shell
-stopssr
+	stopssr
 ```
- 重启
+ >重启
 ```Shell
-restartssr
+	restartssr
 ```
- 查看状态
+ >查看状态
 ```Shell
-statusssr
+	statusssr
 ```
 * 显示当前所有链接SS的用户IP
 ```Shell
