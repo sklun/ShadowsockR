@@ -131,95 +131,100 @@ chmod +x bbr.sh
 ```Shell
 uname -r
 ```
-	查看内核版本，含有 4.9.0 就表示 OK 了
+		查看内核版本，含有 4.9.0 就表示 OK 了
 ```Shell
 sysctl net.ipv4.tcp_available_congestion_control
 ```
-	返回值一般为：net.ipv4.tcp_available_congestion_control = bbr cubic reno
+		返回值一般为：net.ipv4.tcp_available_congestion_control = bbr cubic reno
 ```Shell
 sysctl net.ipv4.tcp_congestion_control
 ```
-	返回值一般为：net.ipv4.tcp_congestion_control = bbr
+		返回值一般为：net.ipv4.tcp_congestion_control = bbr
 ```Shell
 sysctl net.core.default_qdisc
 ```
-	返回值一般为：net.core.default_qdisc = fq
+		返回值一般为：net.core.default_qdisc = fq
 ```Shell
 lsmod | grep bbr
 ```
-	返回值有 tcp_bbr 模块即说明bbr已启动
+		返回值有 tcp_bbr 模块即说明bbr已启动
 
 ### 附录
 
 #### VPS
 
-显示所有进出链接
+* 显示所有进出链接
 ```Shell
 netstat -anp |grep 'ESTABLISHED' |grep 'python'
 ```
-仅显示链接服务器的用户连接 
+* 仅显示链接服务器的用户连接 
 ```Shell
 netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp6'
 ```
-仅显示链接服务器的用户连接数量
+* 仅显示链接服务器的用户连接数量
 ```Shell
 netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp6' |wc -l
 ```
 
 #### SSR 
-	启动	
+* 启动
 ```Shell
 /etc/init.d/shadowsocks start
 ```
-	停止
+* 停止
 ```Shell	
 /etc/init.d/shadowsocks stop
 ```
-	重启
+* 重启
 ```Shell	
 /etc/init.d/shadowsocks restart
 ```
-	查看状态
+* 查看状态
 ```Shell
 /etc/init.d/shadowsocks status
-```	
-	配置文件路径：/etc/shadowsocks.json
+```
+* 配置文件路径：
+	
+	/etc/shadowsocks.json
 
-	日志文件路径：/var/log/shadowsocks.log
+* 日志文件路径：
+	
+	/var/log/shadowsocks.log
 
-	代码安装目录：/usr/local/shadowsocks
+* 代码安装目录：
 
-重定义命令	//设不设都行
-
+	/usr/local/shadowsocks	
+	
+* 重定义命令	//设不设都行
 ```Shell
 echo -e "alias startssr='/etc/init.d/shadowsocks start'\nalias stopssr='/etc/init.d/shadowsocks stop'\nalias restartssr='/etc/init.d/shadowsocks restart'\nalias statusssr='/etc/init.d/shadowsocks status'" >> ~/.bashrc && source ~/.bashrc
 ```
-	启动
+* 设置后：
+ 启动
 ```Shell
 startssr
-```	
-	停止
+```
+ 停止
 ```Shell
 stopssr
-```	
-	重启
+```
+ 重启
 ```Shell
 restartssr
-```	
-	查看状态
+```
+ 查看状态
 ```Shell
 statusssr
 ```
-
-显示当前所有链接SS的用户IP
+* 显示当前所有链接SS的用户IP
 ```Shell
 netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp6' |awk '{print $5}' |awk -F ":" '{print $1}' |sort -u
 ```
-显示当前所有链接SS的用户IP数量
+* 显示当前所有链接SS的用户IP数量
 ```Shell
 netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp6' |awk '{print $5}' |awk -F ":" '{print $1}' |sort -u |wc -l
 ```
-多端口
+* 多端口
 ```Shell
 netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp6' |grep 222.233.22.22:2222  /*yourIp:yourPort*/
 ```
