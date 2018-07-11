@@ -19,9 +19,12 @@ https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsock
 ```Shell
 wget https://raw.githubusercontent.com/sklun/ShadowsockR/master/shadowsocksR.sh    //获取脚本 
 ```    
-	若提示 "wget:command not found";
+>>若提示 "wget:command not found";
 
-	执行>>yum install wget -y    //安装wget
+>>执行
+```Shell
+	yum install wget -y    //安装wget
+```
 ```Shell
 chmod +x shadowsocksR.sh    //赋予执行权限
 ```
