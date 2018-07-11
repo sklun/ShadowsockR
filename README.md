@@ -14,17 +14,23 @@ https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsock
 
 #部署SSR
 执行：
->>wget --no-check-certificate https://raw.githubusercontent.com/sklun/ShadowsockR/master/shadowsocksR.sh    //获取脚本 
-    若提示 "wget:command not found";
-    执行：
-    >>yum install wget -y    //安装wget
+
+>>wget https://raw.githubusercontent.com/sklun/ShadowsockR/master/shadowsocksR.sh    //获取脚本 
+    
+若提示 "wget:command not found";
+
+执行：
+
+>>yum install wget -y    //安装wget
 
 >>chmod +x shadowsocksR.sh    //赋予执行权限
 
 >>./shadowsocksR.sh 2>&1 | tee shadowsocksR.log    //执行安装脚本
+
 {
-    Please enter password for ShadowsocksR:
-    (Default password: teddysun.com):zheshimima   //输入密码
+
+	Please enter password for ShadowsocksR:
+	(Default password: teddysun.com):zheshimima   //输入密码
 
     ---------------------------
     password = zheshimima
@@ -95,7 +101,8 @@ https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsock
 
 #部署完毕后
 {
-    Congratulations, ShadowsocksR server install completed!
+
+	Congratulations, ShadowsocksR server install completed!
     Your Server IP        :  106.46.46.150 
     Your Server Port      :  2333 
     Your Password         :  zheshimima 
@@ -107,7 +114,8 @@ https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsock
 **********************************
 #安装Google BBR加速
 执行:
->>wget --no-check-certificate https://raw.githubusercontent.com/sklun/ShadowsockR/master/bbr.sh
+
+>>wget https://raw.githubusercontent.com/sklun/ShadowsockR/master/bbr.sh
 
 >>chmod +x bbr.sh
 
@@ -149,28 +157,39 @@ https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsock
 #SSR 
 
 启动：/etc/init.d/shadowsocks start
+
 停止：/etc/init.d/shadowsocks stop
+
 重启：/etc/init.d/shadowsocks restart
+
 状态：/etc/init.d/shadowsocks status
+
 配置文件路径：/etc/shadowsocks.json
+
 日志文件路径：/var/log/shadowsocks.log
+
 代码安装目录：/usr/local/shadowsocks
 
 显示当前所有链接SS的用户IP
+
 >>netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp6' |awk '{print $5}' |awk -F ":" '{print $1}' |sort -u
 
 显示当前所有链接SS的用户IP数量
+
 >>netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp6' |awk '{print $5}' |awk -F ":" '{print $1}' |sort -u |wc -l
 
 多端口
+
 >>netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp6' |grep 222.233.22.22:2222  /*yourIp:yourPort*/
 
 >>netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp6' |grep 222.233.22.22:3333  /*yourIp:yourPort*/
 
 SSR修改密码、配置多端口
+
 >>vi /etc/s-s.json
 {
-    "server": "0.0.0.0",    
+    
+	"server": "0.0.0.0",    
     "server_ipv6": "::",
     "local_address": "127.0.0.1",
     "local_port": 1081,
@@ -193,10 +212,12 @@ SSR修改密码、配置多端口
     "fast_open": false,
     "workers": 1
 }    
+
 >>/etc/init.d/s-s restart    //重启ssr
 
 如不能联网，则关闭防火墙    //一般不要关
-    >>service iptables stop
+
+>>service iptables stop
     
-    >>chkconfig iptables off 
+>>chkconfig iptables off 
  
