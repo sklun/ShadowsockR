@@ -10,9 +10,10 @@ https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsock
 
 **********************************
 
-#安装过程
+####安装过程####
 
 #部署SSR
+
 执行：
 
 >>wget https://raw.githubusercontent.com/sklun/ShadowsockR/master/shadowsocksR.sh    //获取脚本 
@@ -30,71 +31,71 @@ https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsock
 	Please enter password for ShadowsocksR:
 	(Default password: teddysun.com):zheshimima   //输入密码
 
-    ---------------------------
-    password = zheshimima
-    ---------------------------
+	---------------------------
+	password = zheshimima
+	---------------------------
 
-    Please enter a port for ShadowsocksR [1-65535]:
-    (Default port: 8989):2333    //输入端口
+	Please enter a port for ShadowsocksR [1-65535]:
+	(Default port: 8989):2333    //输入端口
 
-    ---------------------------
-    port = 2333
-    ---------------------------
+	---------------------------
+	port = 2333
+	---------------------------
     
-    Please select stream cipher for ShadowsocksR:
-    1) none
-    2) aes-256-cfb
-    3) aes-192-cfb
-    4) aes-128-cfb
-    5) aes-256-cfb8
-    6) aes-192-cfb8
-    7) aes-128-cfb8
-    8) aes-256-ctr
-    9) aes-192-ctr
-    10) aes-128-ctr
-    11) chacha20-ietf
-    12) chacha20
-    13) rc4-md5
-    14) rc4-md5-6
-    Which cipher you'd select(Default: aes-256-cfb):12   //选择加密方式
+	Please select stream cipher for ShadowsocksR:
+	1) none
+	2) aes-256-cfb
+	3) aes-192-cfb
+	4) aes-128-cfb
+	5) aes-256-cfb8
+	6) aes-192-cfb8
+	7) aes-128-cfb8
+	8) aes-256-ctr
+	9) aes-192-ctr
+	10) aes-128-ctr
+	11) chacha20-ietf
+	12) chacha20
+	13) rc4-md5
+	14) rc4-md5-6
+	Which cipher you'd select(Default: aes-256-cfb):12   //选择加密方式
 
-    ---------------------------
-    cipher = chacha20
-    ---------------------------
+	---------------------------
+	cipher = chacha20
+	---------------------------
 
-    Please select protocol for ShadowsocksR:
-    1) origin
-    2) verify_deflate
-    3) auth_sha1_v4
-    4) auth_sha1_v4_compatible
-    5) auth_aes128_md5
-    6) auth_aes128_sha1
-    7) auth_chain_a
-    8) auth_chain_b
-    Which protocol you'd select(Default: origin):3  //选择协议
+	Please select protocol for ShadowsocksR:
+	1) origin
+	2) verify_deflate
+	3) auth_sha1_v4
+	4) auth_sha1_v4_compatible
+	5) auth_aes128_md5
+	6) auth_aes128_sha1
+	7) auth_chain_a
+	8) auth_chain_b
+	Which protocol you'd select(Default: origin):3  //选择协议
 
-    ---------------------------
-    protocol = auth_sha1_v4
-    ---------------------------
+	---------------------------
+	protocol = auth_sha1_v4
+	---------------------------
 
-    Please select obfs for ShadowsocksR:
-    1) plain
-    2) http_simple
-    3) http_simple_compatible
-    4) http_post
-    5) http_post_compatible
-    6) tls1.2_ticket_auth
-    7) tls1.2_ticket_auth_compatible
-    8) tls1.2_ticket_fastauth
-    9) tls1.2_ticket_fastauth_compatible
-    Which obfs you'd select(Default: plain):6   //选择混淆
+	Please select obfs for ShadowsocksR:
+	1) plain
+	2) http_simple
+	3) http_simple_compatible
+	4) http_post
+	5) http_post_compatible
+	6) tls1.2_ticket_auth
+	7) tls1.2_ticket_auth_compatible
+	8) tls1.2_ticket_fastauth
+	9) tls1.2_ticket_fastauth_compatible
+	Which obfs you'd select(Default: plain):6   //选择混淆
 
-    ---------------------------
-    obfs = tls1.2_ticket_auth
-    ---------------------------
+	---------------------------
+	obfs = tls1.2_ticket_auth
+	---------------------------
 
 
-    Press any key to start...or Press Ctrl+C to cancel   //开始部署
+	Press any key to start...or Press Ctrl+C to cancel   //开始部署
 }
 
 #部署完毕后
@@ -102,12 +103,12 @@ https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsock
 {
 
 	Congratulations, ShadowsocksR server install completed!
-    Your Server IP        :  106.46.46.150 
-    Your Server Port      :  2333 
-    Your Password         :  zheshimima 
-    Your Protocol         :  auth_sha1_v4 
-    Your obfs             :  tls1.2_ticket_auth 
-    Your Encryption Method:  chacha20 
+	Your Server IP        :  106.46.46.150 
+	Your Server Port      :  2333 
+	Your Password         :  zheshimima 
+	Your Protocol         :  auth_sha1_v4 
+	Your obfs             :  tls1.2_ticket_auth 
+	Your Encryption Method:  chacha20 
 }
 
 **********************************
@@ -158,19 +159,32 @@ https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsock
 **********************************　
 #SSR 
 
-启动：/etc/init.d/shadowsocks start
+	启动>>/etc/init.d/shadowsocks start
 
-停止：/etc/init.d/shadowsocks stop
+	停止>>/etc/init.d/shadowsocks stop
 
-重启：/etc/init.d/shadowsocks restart
+	重启>>/etc/init.d/shadowsocks restart
 
-状态：/etc/init.d/shadowsocks status
+	查看状态>>/etc/init.d/shadowsocks status
+	
+	配置文件路径：/etc/shadowsocks.json
 
-配置文件路径：/etc/shadowsocks.json
+	日志文件路径：/var/log/shadowsocks.log
 
-日志文件路径：/var/log/shadowsocks.log
+	代码安装目录：/usr/local/shadowsocks
 
-代码安装目录：/usr/local/shadowsocks
+重定义命令	//设不设都行
+
+>> echo -e "alias startssr='/etc/init.d/shadowsocks start'\nalias stopssr='/etc/init.d/shadowsocks stop'\nalias restartssr='/etc/init.d/shadowsocks restart'\nalias statusssr='/etc/init.d/shadowsocks status'" >> ~/.bashrc && source ~/.bashrc
+
+	启动>>startssr
+	
+	停止>>stopssr
+	
+	重启>>restartssr
+	
+	查看状态>>statusssr
+
 
 显示当前所有链接SS的用户IP
 
@@ -188,35 +202,24 @@ https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsock
 
 SSR修改密码、配置多端口
 
->>vi /etc/s-s.json
+>>vi /etc/shadowsocks.json
 
 {
     
 	"server": "0.0.0.0",    
-    "server_ipv6": "::",
-    "local_address": "127.0.0.1",
-    "local_port": 1081,
-    "port_password":{
-        "端口1":"密码1",
-        "端口2":"密码2",
-        "端口3":"密码3",
-        "端口4":"密码4"
-    },
-    "timeout": 120,
-    "udp_timeout": 60,
-    "method": "chacha20",
-    "protocol": "auth_sha1_compatible",
-    "protocol_param": "",
-    "obfs": "http_simple_compatible",
-    "obfs_param": "",
-    "dns_ipv6": false,
-    "connect_verbose_info": 0,
-    "redirect": "",
-    "fast_open": false,
-    "workers": 1
+	"server_ipv6": "::",
+	"local_address": "127.0.0.1",
+	"local_port": 1081,
+	"port_password":{
+		"port1":"passwd1",
+		"port2":"passwd2",
+		"port3":"passwd3",
+		"port4":"passwd4"
+	},
+	
 }    
 
->>/etc/init.d/s-s restart    //重启ssr
+>>/etc/init.d/shadowsocks restart    //重启ssr
 
 如不能联网，则关闭防火墙    //一般不要关
 
