@@ -19,8 +19,8 @@ echo "# Github: https://github.com/shadowsocksr/shadowsocksr      #"
 echo "#############################################################"
 echo
 
-libsodium_file="libsodium-1.0.16"
-libsodium_url="https://download.libsodium.org/libsodium/releases/libsodium-1.0.16.tar.gz"
+libsodium_file="libsodium-1.0.17"
+libsodium_url="https://download.libsodium.org/libsodium/releases/libsodium-1.0.17.tar.gz"
 
 #Current folder
 cur_dir=`pwd`
