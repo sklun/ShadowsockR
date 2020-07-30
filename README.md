@@ -18,7 +18,7 @@ https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsock
 #### 执行：
 
 ```Shell
-wget https://raw.githubusercontent.com/sklun/ShadowsockR/master/shadowsocksR.sh    //获取脚本 
+wget https://raw.githubusercontent.com/doing29/ShadowsockR/master/shadowsocksR.sh    //获取脚本 
 ```    
 >>若提示 "wget:command not found";
 
